@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <style>
+        body{ 
+            background-color: greenyellow;
+            align-items: center; 
+            font-family: Calibri;  
+        }  
+        input[type="text"] {  
+            width: 250px;  
+        }  
+        input[type="submit"], input[type="reset"] {  
+            width: 77px;  
+            height: 27px;  
+            position: relative;left: 180px;  
+        }  
+        form{  background-color: grey;
+            text-align: center;  
+            font-family: Calibri;  
+            font-size: 20px;  
+            border: 3px solid black;  
+            width: 600px;  
+            margin: 20px auto;  
+        }  
+        td {  
+            padding: 10px;  
+        }  
+        td:first-child {  
+            text-align: right;  
+            font-weight: bold;
+        }  
+        td:last-child {  
+            text-align:left;
+            
+         }
+        .Top{
+            width: 100%;
+            background-color: goldenrod;
+            height: 150px;
+            font-family: fantasy;
+            text-align: center;
+            font-size: x-large;
+            float: left;
+        }
+        .Leftmenu{
+            width: 16%;
+            height: 600px;
+            background-color: aqua;
+            float: left;
+            border: 5px outset #819bf5;
+        }
+        .Centermenu{
+            width:66%;
+            height:600px;
+            background-color: #d8e0fc;
+            float:left;
+            border: 5px outset #819bf5;
+        }
+        .Rightmenu{
+            width: 16%;
+            height: 600px;
+            background-color: aqua;
+            float: left;
+            border: 5px outset #819bf5;
+        }
+        .headd{
+            text-align: center;
+            font-size: xx-large;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: crimson;
+        }
+        .boxx{
+            padding:5px;
+            border: 2px outset black;
+        
+        }
+        .Bottom{
+            width:100%;
+            height: auto;
+            background-color: tomato;
+            border:5px outset chocolate;
+            float:left
+        
+        }
+        
+</style>        
+    </head>
+
+    <body>
+        <h1 style="font-family: fantasy;
+        text-align: center;
+        font-size: x-large;">Register for session</h1>
+        <form method="POST">
+            {%csrf_token%}
+            {{form.as_p}}
+            <input type="submit" value="submit">
+        </form>
+    </body>
+</html>

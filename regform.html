@@ -1,0 +1,193 @@
+<!DOCTYPE html>    
+<html>    
+<head>    
+    <title>Reg Form</title>    
+    <link rel="stylesheet" href="cssfile.css">
+    <script>    
+        function validate() {    
+            var fname = document.reg_form.fname;    
+            var lname = document.reg_form.lname;    
+            var address = document.reg_form.address;    
+            var gender = document.reg_form.gender;    
+            var email = document.reg_form.email;    
+            var mobile = document.reg_form.mobile;    
+            var course = document.reg_form.course;    
+    
+            if (fname.value.length <= 0) {    
+                alert("Name is required");    
+                fname.focus();    
+                return false;    
+            }    
+            if (lname.value.length <= 0) {    
+                alert("Last Name is required");    
+                lname.focus();    
+                return false;    
+            }    
+            if (address.value.length <= 0) {    
+                alert("Address is required");    
+                address.focus();    
+                return false;    
+            }    
+            if (gender.value.length <= 0) {    
+                alert("Gender is required");    
+                gender.focus();    
+                return false;    
+            }    
+            if (email.value.length <= 0) {    
+                alert("Email Id is required");    
+                email.focus();    
+                return false;    
+            }    
+            if (mobile.value.length <= 0) {    
+                alert("Mobile number is required");    
+                mobile.focus();    
+                return false;    
+            }    
+            if (course.value == "select course") {    
+                alert("Course is required");    
+                course.focus();    
+                return false;    
+            }    
+            return false;    
+        }
+        function ValidateEmail(inputText) 
+        {
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(inputText.value.match(mailformat))
+            {
+                return true;
+            }
+            else
+            {
+                alert("You have entered an invalid email address!");
+                document.reg_form.email.focus();
+                return false;
+            }
+        }    
+        function phonenumber(inputtxt)
+        {
+            var phoneno = /^\d{10}$/;
+            if(inputtxt.value.match(phoneno))
+            {
+                return true;
+            }
+            else
+            {
+                alert("Please enter valid phone number");
+                return false;
+            }
+        }
+        var i = 1;
+
+        function addHobbie() {
+            i++;
+            var div = document.createElement('div');
+            var id = i;
+            div.innerHTML ='Hobbie_' + id + ': <input type="text" name="Hobbie_' + id + '"/>' + ' <input type="button" id="add_Hobbie()_' + id + '" onclick="addHobbie()" value="+" />' + ' <input type="button" id="rem_Hobbie()_' + id + '" onclick="remHobbie(this)" value="-" />';
+            document.getElementById('Hobbies').appendChild(div);
+        }
+
+        function remHobbie(div) {
+            document.getElementById('Hobbies').removeChild(div.parentNode);
+            i--;
+        }
+        function OnFocusInput (input) {
+            input.style.color = "Black";
+            input.style.backgroundColor="Aqua";
+        }
+
+        function OnBlurInput (input) {
+            input.style.color = "Grey";
+            input.style.backgroundColor="White";
+        }
+        function alertfun(){
+            alert("Are you sure you want to reset??")
+        }
+        function confun(){
+            var t = confirm("Do you really want to Submit?");       
+            if(t == true)    
+            {    
+                document.write("Thanks for using");    
+            }    
+            else    
+            {    
+                   
+            }    
+
+        }
+
+    </script>    
+</head>    
+<body>    
+    <centre><h1>REGISTRATION FORM</h1></centre>    
+    <hr>    
+    <form method="" action="" name="reg_form" onsubmit="return validate()">    
+        <h2>Registration Form</h2>    
+        <table>    
+            <tr>    
+                <td><label>First Name: </label></td>    
+                <td>    
+                    <input type="text" name="fname" placeholder="First Name" onfocus="OnFocusInput(this)"; onblur="OnBlurInput(this)">    
+                </td>    
+            </tr>    
+            <tr>    
+                <td><label>Last Name: </label></td>    
+                <td>    
+                    <input type="text" name="lname" placeholder="Last Name" onfocus="OnFocusInput(this)"; onblur="OnBlurInput(this)">    
+                </td>    
+            </tr>    
+            <tr>    
+                <td><label>Address: </label></td>    
+                <td>    
+                    <input type="textarea" size="50" name="address" placeholder="Address" onfocus="OnFocusInput(this)"; onblur="OnBlurInput(this)">    
+                </td>    
+            </tr>    
+            <tr>    
+                <td><label>Gender: </label></td>    
+                <td>    
+                    <input type="radio" name="gender" value="male" onfocus="OnFocusInput(this)"; onblur="OnBlurInput(this)">Male    
+                    <input type="radio" name="gender" value="femele" onfocus="OnFocusInput(this)"; onblur="OnBlurInput(this)">Female    
+                </td>    
+            </tr>    
+            <tr>    
+                <td><label>Email Id: </label></td>    
+                <td>    
+                    <input type="text" name="email" placeholder="example@gmail.com" onchange="ValidateEmail(document.reg_form.email)"  onfocus="OnFocusInput(this)"; onblur="OnBlurInput(this)">    
+                </td>    
+            </tr>    
+            <tr>    
+                <td><label>Mobile: </label></td>    
+                <td>    
+                    <input type="text" name="mobile" onchange="phonenumber(document.reg_form.mobile)" onfocus="OnFocusInput(this)"; onblur="OnBlurInput(this)">    
+                </td>    
+            </tr>    
+            <tr>    
+            <td><label>Course: </label></td>    
+                <td>    
+                    <select name="course">    
+                        <option value="select course">select course</option>    
+                        <option value="HTML">HTML</option>    
+                        <option value="CSS">CSS</option>    
+                        <option value="JavaScript">JAVASCRIPT</option>    
+                        <option value="Java">JAVA</option>    
+                    </select>    
+                </td>    
+            </tr>  
+            <tr style="margin-left: 80px;">
+                <td colspan="2" id="Hobbies" >
+                        <label >Hobbie_1</label>
+                        
+                        <input type="text" name="Hobbie_1"  onfocus="OnFocusInput(this)"; onblur="OnBlurInput(this)">
+                        <input type="button" id="add_Hobbie()_1" onclick="addHobbie()" value="+" />
+                </td>
+            </tr>  
+            <tr>    
+                <td>    
+                    <input type="submit" name="submit" value="Submit" onclick="confun()">    
+                    <input type="reset" name="reset" value="Reset" onclick="alertfun()">    
+                </td>    
+            </tr>             
+        </table>    
+    </form>    
+</body>    
+</html>     
